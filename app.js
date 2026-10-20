@@ -20,7 +20,7 @@ const botonesFiltro = document.querySelectorAll('.btn-filtro');
 async function inicializarApp() {
   await new Promise(resolve => setTimeout(resolve, 1500));
     loadingState.style.display = 'none';
-  // TODO: Invocar a la función pintarTareas()
+        pintarTareas();
 }
 
 // 4. FUNCIÓN DE RENDERIZADO: Encargada de pintar los nodos en el HTML
