@@ -39,8 +39,9 @@ function pintarTareas() {
     
     tareasFiltradas.forEach(tarea => {
         const li = document.createElement('li');
+            li.classList.add('item-tarea', tarea.prioridad);
     });
-  // TODO: Configurar las clases CSS según la prioridad y el estado (completada)
+    
   // TODO: Añadir un botón dentro de cada <li> para poder alternar el estado (Completada/Pendiente)
   // TODO: Inyectar el <li> resultante en listaContenedor usando .appendChild()
 }
