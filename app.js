@@ -40,9 +40,12 @@ function pintarTareas() {
     tareasFiltradas.forEach(tarea => {
         const li = document.createElement('li');
             li.classList.add('item-tarea', tarea.prioridad);
+                if (tarea.completada) {
+                    li.classList.add('completada');
+                } else {
+                    li.classList.add('pendiente');
+                }
     });
-    
-  // TODO: Añadir un botón dentro de cada <li> para poder alternar el estado (Completada/Pendiente)
   // TODO: Inyectar el <li> resultante en listaContenedor usando .appendChild()
 }
 
