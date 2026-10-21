@@ -25,28 +25,31 @@ async function inicializarApp() {
 
 // 4. FUNCIÓN DE RENDERIZADO: Encargada de pintar los nodos en el HTML
 function pintarTareas() {
-  listaContenedor.innerHTML = '';
-    
+    listaContenedor.innerHTML = '';
     const tareasFiltradas = tareas.filter(tarea => {
-        if (filtroActual === 'Pendientes') {
-            return !tarea.completada;
-        }
-        if (filtroActual === 'Completadas') {
-            return tarea.completada;
-        }
-         return true;
+      if (filtroActual === 'Pendientes') {
+        return !tarea.completada;
+      }
+      if (filtroActual === 'Completadas') {
+        return tarea.completada;
+      }
+      return true;
     });
-    
+
     tareasFiltradas.forEach(tarea => {
-        const li = document.createElement('li');
-            li.classList.add('item-tarea', tarea.prioridad);
-                if (tarea.completada) {
-                    li.classList.add('completada');
-                } else {
-                    li.classList.add('pendiente');
-                }
+      const li = document.createElement('li');
+        li.textContent = tarea.titulo;
+        li.classList.add('item-tarea', tarea.prioridad);
+          if (tarea.completada) {
+            li.classList.add('completada');
+          } 
+          else {
+            li.classList.add('pendiente');
+          }
+
+      const boton = document.createElement('button');
+        boton.textContent = 'Cambiar estado';
     });
-  // TODO: Inyectar el <li> resultante en listaContenedor usando .appendChild()
 }
 
 // 5. MANEJO DE EVENTOS: Captura de formulario
