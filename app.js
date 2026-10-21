@@ -82,7 +82,7 @@ botonesFiltro.forEach(boton => {
     document.querySelector('.btn-filtro.active').classList.remove('active');
     event.target.classList.add('active');
 
-    // TODO: Actualizar la variable 'filtroActual' con el atributo 'data-filtro' del botón
+  filtroActual = event.target.dataset.filtro;
     // TODO: Invocar pintarTareas() para refrescar la pantalla
   });
 });
