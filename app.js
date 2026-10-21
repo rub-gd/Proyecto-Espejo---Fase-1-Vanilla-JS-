@@ -26,30 +26,36 @@ async function inicializarApp() {
 // 4. FUNCIÓN DE RENDERIZADO: Encargada de pintar los nodos en el HTML
 function pintarTareas() {
     listaContenedor.innerHTML = '';
-    const tareasFiltradas = tareas.filter(tarea => {
-      if (filtroActual === 'Pendientes') {
-        return !tarea.completada;
-      }
-      if (filtroActual === 'Completadas') {
-        return tarea.completada;
-      }
-      return true;
-    });
+      const tareasFiltradas = tareas.filter(tarea => {
+          if (filtroActual === 'Pendientes') {
+              return !tarea.completada;
+          }
+          if (filtroActual === 'Completadas') {
+              return tarea.completada;
+          }
+        return true;
+      });
 
     tareasFiltradas.forEach(tarea => {
-      const li = document.createElement('li');
-        li.textContent = tarea.titulo;
-        li.classList.add('item-tarea', tarea.prioridad);
-          if (tarea.completada) {
-            li.classList.add('completada');
-          } 
-          else {
-            li.classList.add('pendiente');
-          }
+        const li = document.createElement('li');
+          li.textContent = tarea.titulo;
+          li.classList.add('item-tarea', tarea.prioridad);
+            if (tarea.completada) {
+              li.classList.add('completada');
+            }
+            else {
+              li.classList.add('pendiente');
+            }
 
-      const boton = document.createElement('button');
-        boton.textContent = 'Cambiar estado';
-    });
+        const boton = document.createElement('button');
+          boton.textContent = 'Cambiar estado';
+          boton.addEventListener('click', () => {
+            tarea.completada = !tarea.completada;
+              pintarTareas();
+          });
+          li.appendChild(boton);
+            listaContenedor.appendChild(li);
+        });
 }
 
 // 5. MANEJO DE EVENTOS: Captura de formulario
